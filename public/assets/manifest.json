@@ -10,7 +10,7 @@
     "src": "resources/js/Frontend/main.js"
   },
   "resources/scss/Backend/backend.scss": {
-    "file": "js/backendStyle.js",
+    "file": "css/backend.css",
     "isEntry": true,
     "src": "resources/scss/Backend/backend.scss"
   },

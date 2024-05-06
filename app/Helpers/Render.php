@@ -18,7 +18,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function view( string $path, $data, bool $display = true ) {
+	public static function view( string $path, mixed $data, bool $display = true ) {
 		$path = self::get_path( $path );
 
 		return self::render( $path, $data, $display );
@@ -31,7 +31,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function component( string $path, array $data, bool $display = true ) {
+	public static function component( string $path, mixed $data, bool $display = true ) {
 		$path = self::get_path( $path, true );
 
 		return self::render( $path, $data, $display );
@@ -44,7 +44,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function render( string $path, array $data, bool $display = false ) {
+	public static function render( string $path, mixed $data, bool $display = false ) {
 
 		if ( file_exists( $path ) ) {
 			if ( ! empty( $data ) ) {
