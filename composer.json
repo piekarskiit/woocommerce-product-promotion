@@ -1,0 +1,47 @@
+{
+	"name": "piekarskiit/woocommerce-product-promotion",
+	"authors": [
+		{
+			"name": "Karol Piekarski",
+			"email": "hello@piekarski.it"
+		}
+	],
+	"require": {
+		"php": ">=8.1.0",
+		"humbug/php-scoper": "0.17.7"
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "dev-develop",
+		"phpcompatibility/php-compatibility": "^9.3.5",
+		"phpstan/phpstan": "^1.10.67",
+		"szepeviktor/phpstan-wordpress": "^v1.3.4",
+		"phpcsstandards/phpcsutils": "^1.0.11",
+		"php-stubs/woocommerce-stubs": "^7.9.0"
+	},
+	"autoload": {
+		"classmap": [
+			"vendor_prefixed"
+		],
+		"psr-4": {
+			"PiekarskiIT\\App\\": "app/",
+			"PiekarskiIT\\Config\\": "config/"
+		}
+	},
+	"scripts": {
+		"init-env": "composer run pre-install-cmd && composer require humbug/php-scoper:0.17.7",
+		"build": "composer install --no-dev  && composer run prefixer && composer run clear",
+		"prefixer": "rm -rf vendor_prefixed && vendor/bin/php-scoper add-prefix --output-dir vendor_prefixed && find vendor/* -type d ! -name \"composer\" -exec rm -rf {} + && composer dump-autoload",
+		"clear": "rm -rf vendor_prefixed/jetbrains && rm -rf vendor_prefixed/humbug  && rm -rf vendor_prefixed/nikic  && rm -rf vendor_prefixed/thecodingmachine",
+		"tests": "composer install && composer phpcs-fix && composer phpcs && composer phpstan",
+		"phpcs": "phpcs",
+		"phpcs-fix": "phpcbf",
+		"phpstan": "php -d memory_limit=512M -n ./vendor/bin/phpstan analyse",
+		"pre-install-cmd": "test -d vendor_prefixed || mkdir vendor_prefixed",
+		"all": "composer run pre-install-cmd && composer run build && composer run tests"
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "wpp-vite",
+	"private": true,
+	"scripts": {
+		"wpp:build": "vite build",
+		"wpp:dev": "concurrently \"npm run tsc\" \"npm run dev\"",
+		"dev": "vite build --no-minify --watch --mode development"
+	},
+	"dependencies": {
+	},
+	"devDependencies": {
+		"@vitejs/plugin-vue": "^4.2.3",
+		"@wordpress/prettier-config": "^2.24.0",
+		"autoprefixer": "^10.4.14",
+		"concurrently": "^8.2.0",
+		"postcss": "^8.4.27",
+		"sass": "^1.65.1",
+		"vite": "^4.4.5"
+	}
+}

@@ -1,0 +1,22 @@
+{
+  "resources/js/Backend/main.js": {
+    "file": "js/backend.js",
+    "isEntry": true,
+    "src": "resources/js/Backend/main.js"
+  },
+  "resources/js/Frontend/main.js": {
+    "file": "js/frontend.js",
+    "isEntry": true,
+    "src": "resources/js/Frontend/main.js"
+  },
+  "resources/scss/Backend/backend.scss": {
+    "file": "js/backendStyle.js",
+    "isEntry": true,
+    "src": "resources/scss/Backend/backend.scss"
+  },
+  "resources/scss/Frontend/frontend.scss": {
+    "file": "css/frontend.css",
+    "isEntry": true,
+    "src": "resources/scss/Frontend/frontend.scss"
+  }
+}
