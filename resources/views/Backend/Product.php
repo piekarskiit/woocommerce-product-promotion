@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings index view.
+ * Product Settings view.
  *
  * @var string $promote_product_activate_value
  * @var string $promote_product_text_value
@@ -19,13 +19,14 @@ woocommerce_wp_checkbox(
 		'id'          => '_promote_product_activate',
 		'value'       => $promote_product_activate_value,
 		'data_type'   => 'checkbox',
+        'wrapper_class' => 'show_if_simple',
 		'label'       => __( 'Promote this product', 'wpp_translate' ),
 		'description' => '',
 	)
 ); ?>
 
 
-<div class="show_if_simple show_if_variable is_hidden" id="promote_product_fields">
+<div class="show_if_simple is_hidden" id="promote_product_fields">
 
 	<?php
 	woocommerce_wp_text_input(
@@ -42,13 +43,12 @@ woocommerce_wp_checkbox(
 			'id'            => '_promote_product_checkbox_date',
 			'value'         => $promote_product_checkbox_date_value,
 			'data_type'     => 'checkbox',
-			'wrapper_class' => 'show_if_simple show_if_variable',
 			'label'         => __( 'Would you like to set a promotion end date?', 'wpp_translate' ),
 			'description'   => '',
 		)
 	);
 	?>
-	<div class="show_if_simple show_if_variable is_hidden" id="promote_product_checkbox_date_fields">
+	<div class="show_if_simple is_hidden" id="promote_product_checkbox_date_fields">
 		<?php
 		woocommerce_wp_text_input(
 			array(
