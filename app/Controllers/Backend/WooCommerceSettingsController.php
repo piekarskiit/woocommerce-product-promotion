@@ -4,7 +4,6 @@ namespace PiekarskiIT\App\Controllers\Backend;
 
 class WooCommerceSettingsController {
 
-
 	public static function run(): void {
 		add_filter( 'woocommerce_products_general_settings', [ new self(), 'custom_woocommerce_product_settings' ] );
 	}
@@ -14,8 +13,7 @@ class WooCommerceSettingsController {
 	 *
 	 * @return string[][]
 	 */
-	public function custom_woocommerce_product_settings( $settings ): array {
-
+	public function custom_woocommerce_product_settings( array $settings ): array {
 		$settings[] = array(
 			'title' => __( 'Product Promotion', 'wpp_translate' ),
 			'desc'  => '',
@@ -27,6 +25,7 @@ class WooCommerceSettingsController {
 			'desc'    => __( 'Fill title', 'wpp_translate' ),
 			'id'      => 'product_promotion_title',
 			'type'    => 'text',
+			'css'     => 'min-width:435px;',
 			'default' => __( 'FLASH SALE', 'wpp_translate' ),
 		);
 
@@ -45,6 +44,30 @@ class WooCommerceSettingsController {
 			'type'    => 'color',
 			'default' => '#ffffff',
 		);
+
+		$promote_product_id = get_option( '_promote_product_id' );
+
+		if ( !empty( $promote_product_id ) ) {
+			$product = wc_get_product( $promote_product_id );
+
+			if ( $product instanceof \WC_Product ) {
+				$settings[] = array(
+					'title' => __( 'Promoted product', 'wpp_translate' ),
+					// translators: %s is the url to the product edit page, %s product title.
+					'text'  => sprintf( '<a href="%s" target="_blank">%s</a>', admin_url( 'post.php?post=' . $product->get_id() . '&action=edit' ), $product->get_title() ),
+					'id'    => 'product_promotion_product',
+					'type'  => 'info',
+				);
+			}
+		} else {
+			$settings[] = array(
+				'title' => __( 'Promoted product', 'wpp_translate' ),
+				// translators: %s is the url to the product list.
+				'text'  => sprintf( __( 'You are not currently promoting any product. <a href="%s" target="_blank">Click here</a> to go to the product list.', 'wpp_translate' ), admin_url( 'edit.php?post_type=product' ) ),
+				'id'    => 'product_promotion_product',
+				'type'  => 'info',
+			);
+		}
 
 		$settings[] = array(
 			'type' => 'sectionend',

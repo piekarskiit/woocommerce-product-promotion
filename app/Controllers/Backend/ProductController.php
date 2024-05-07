@@ -79,6 +79,12 @@ class ProductController {
 			update_option( '_promote_product_text', $promote_product_text );
 			update_option( '_promote_product_checkbox_date', $promote_product_checkbox_date );
 			update_option( '_promote_product_datetime_date', $promote_product_datetime_date );
+		} elseif ( (int) get_option( '_promote_product_id' ) === $product->get_id() ) {
+			delete_option( '_promote_product_id' );
+			delete_option( '_promote_product_activate' );
+			delete_option( '_promote_product_text' );
+			delete_option( '_promote_product_checkbox_date' );
+			delete_option( '_promote_product_datetime_date' );
 		}
 	}
 }

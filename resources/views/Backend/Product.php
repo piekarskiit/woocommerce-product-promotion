@@ -16,12 +16,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 woocommerce_wp_checkbox(
 	array(
-		'id'          => '_promote_product_activate',
-		'value'       => $promote_product_activate_value,
-		'data_type'   => 'checkbox',
-        'wrapper_class' => 'show_if_simple',
-		'label'       => __( 'Promote this product', 'wpp_translate' ),
-		'description' => '',
+		'id'            => '_promote_product_activate',
+		'value'         => $promote_product_activate_value,
+		'data_type'     => 'checkbox',
+		'wrapper_class' => 'show_if_simple',
+		'label'         => __( 'Promote this product', 'wpp_translate' ),
+		'description'   => '',
 	)
 ); ?>
 
@@ -40,11 +40,11 @@ woocommerce_wp_checkbox(
 
 	woocommerce_wp_checkbox(
 		array(
-			'id'            => '_promote_product_checkbox_date',
-			'value'         => $promote_product_checkbox_date_value,
-			'data_type'     => 'checkbox',
-			'label'         => __( 'Would you like to set a promotion end date?', 'wpp_translate' ),
-			'description'   => '',
+			'id'          => '_promote_product_checkbox_date',
+			'value'       => $promote_product_checkbox_date_value,
+			'data_type'   => 'checkbox',
+			'label'       => __( 'Would you like to set a promotion end date?', 'wpp_translate' ),
+			'description' => '',
 		)
 	);
 	?>

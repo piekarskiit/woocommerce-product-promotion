@@ -7,7 +7,7 @@
 
 namespace PiekarskiIT\Config\ManagePlugin;
 
-use PiekarskiIT\Config\ManagePlugin\Deactivation\DeactivationPlugin;
+use PiekarskiIT\Config\ManagePlugin\Deactivation\UninstallPlugin;
 
 class ManagePlugin {
 
@@ -17,6 +17,6 @@ class ManagePlugin {
 	 * @return void
 	 */
 	public static function run() {
-		new DeactivationPlugin();
+		new UninstallPlugin();
 	}
 }
