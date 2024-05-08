@@ -9,6 +9,7 @@ namespace PiekarskiIT\App;
 
 use PiekarskiIT\App\Controllers\Backend\ProductController;
 use PiekarskiIT\App\Controllers\Backend\WooCommerceSettingsController;
+use PiekarskiIT\App\Controllers\Frontend\BannerController;
 
 class App {
 
@@ -28,6 +29,8 @@ class App {
 		if ( is_admin() ) {
 			ProductController::run();
 			WooCommerceSettingsController::run();
+		} else {
+			BannerController::run();
 		}
 	}
 }
