@@ -11,8 +11,13 @@ use PiekarskiIT\Config\PluginInfo;
 
 class UninstallPlugin {
 
-	public function __construct() {
-		register_uninstall_hook( PluginInfo::get_instance()->get_plugin_file_path(), [ __CLASS__, 'uninstall' ] );
+	/**
+	 * Run class.
+	 *
+	 * @return void
+	 */
+	public static function run(): void {
+		register_uninstall_hook( PluginInfo::get_instance()->get_plugin_file_path(), [ self::class, 'uninstall' ] );
 	}
 
 	/**

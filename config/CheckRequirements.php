@@ -6,8 +6,12 @@ use PiekarskiIT\App\Helpers\Render;
 
 class CheckRequirements {
 
-
-	public static function run(): void {
+	/**
+	 * Initializes all hooks.
+	 *
+	 * @return void
+	 */
+	public static function init_hooks(): void {
 		add_action( 'admin_init', [ new self(), 'check_woocommerce_installed' ] );
 	}
 

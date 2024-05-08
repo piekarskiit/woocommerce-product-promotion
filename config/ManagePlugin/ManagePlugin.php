@@ -16,7 +16,7 @@ class ManagePlugin {
 	 *
 	 * @return void
 	 */
-	public static function run() {
-		new UninstallPlugin();
+	public static function run(): void {
+		UninstallPlugin::run();
 	}
 }
