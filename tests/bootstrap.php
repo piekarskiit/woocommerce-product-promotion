@@ -1,18 +1,20 @@
 <?php
-if (!defined('ABSPATH')) {
-    define('ABSPATH', __DIR__ . '/../../../wordpress/');
-    require_once ABSPATH . 'wp-load.php';
-    require_once ABSPATH . 'wp-config.php';
-    require_once ABSPATH . 'wp-settings.php';
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+error_reporting( E_ALL );
+
+if ( getenv( 'PLUGIN_PATH' ) !== false ) {
+    define( 'PLUGIN_PATH', getenv( 'PLUGIN_PATH' ) );
+} else {
+    define( 'PLUGIN_PATH', __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR );
 }
 
-function _check_for_dependencies() {
-    if (!is_plugin_active('some-plugin/some-plugin.php')) {
-        exit('Some Plugin must be active to run the tests.' . PHP_EOL);
-    }
+if ( getenv( 'ABSPATH' ) !== false ) {
+    define( 'ABSPATH', getenv( 'ABSPATH' ) );
+} else {
+    define( 'ABSPATH', PLUGIN_PATH . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR );
 }
-tests_add_filter('plugins_loaded', '_check_for_dependencies');
-putenv('WP_ENVIRONMENT_TYPE=test');
 
-
-require_once 'vendor/autoload.php';
+WP_Mock::setUsePatchwork( true );
+WP_Mock::bootstrap();
