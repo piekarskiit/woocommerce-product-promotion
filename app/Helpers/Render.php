@@ -18,7 +18,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function view( string $path, mixed $data, bool $display = true ) {
+	public static function view( string $path, mixed $data, bool $display = true ): string {
 		$path = self::get_path( $path );
 
 		return self::render( $path, $data, $display );
@@ -31,7 +31,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function component( string $path, mixed $data, bool $display = true ) {
+	public static function component( string $path, mixed $data, bool $display = true ): string {
 		$path = self::get_path( $path, true );
 
 		return self::render( $path, $data, $display );
@@ -44,7 +44,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function render( string $path, mixed $data, bool $display = false ) {
+	public static function render( string $path, mixed $data, bool $display = false ): string {
 
 		if ( file_exists( $path ) ) {
 			if ( ! empty( $data ) ) {
@@ -74,7 +74,7 @@ class Render {
 	 *
 	 * @return string
 	 */
-	public static function get_path( string $path, bool $is_component = false ) {
+	public static function get_path( string $path, bool $is_component = false ): string {
 		$base = PluginInfo::get_instance()->get_plugin_path() . DIRECTORY_SEPARATOR . 'resources' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR;
 
 		if ( $is_component ) {
@@ -82,28 +82,5 @@ class Render {
 		}
 
 		return $base . $path . '.php';
-	}
-
-	/**
-	 * @param string[] $attributes .
-	 *
-	 * @return string
-	 */
-	public static function build_html_attr( $attributes ) {
-
-		return ' ' . implode(
-			' ',
-			array_map(
-				function ( $attr, $value ) {
-					if ( ! $value ) {
-						return "";
-					}
-
-					return "$attr='$value'";
-				},
-				array_keys( $attributes ),
-				$attributes
-			)
-		);
 	}
 }

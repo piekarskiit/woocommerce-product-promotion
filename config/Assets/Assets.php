@@ -11,15 +11,14 @@ use PiekarskiIT\Config\PluginInfo;
 
 class Assets {
 
-
 	/**
 	 * Run class.
 	 *
 	 * @return void
 	 */
-	public static function run(): void {
-		add_action( 'wp_enqueue_scripts', [ new self(), 'scripts' ] );
-		add_action( 'admin_enqueue_scripts', [ new self(), 'admin_scripts' ] );
+	public static function init_hooks(): void {
+		add_action( 'wp_enqueue_scripts', [ __CLASS__, 'scripts' ] );
+		add_action( 'admin_enqueue_scripts', [ __CLASS__, 'admin_scripts' ] );
 	}
 
 	/**
@@ -27,7 +26,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function scripts(): void {
+	public static function scripts(): void {
 		if ( is_admin() ) {
 			return;
 		}
@@ -41,7 +40,7 @@ class Assets {
 	 *
 	 * @return void
 	 */
-	public function admin_scripts(): void {
+	public static function admin_scripts(): void {
 		if ( !is_admin() ) {
 			return;
 		}

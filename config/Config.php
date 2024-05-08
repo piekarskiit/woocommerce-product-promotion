@@ -14,10 +14,12 @@ class Config {
 
 	/**
 	 * Config constructor.
+	 *
+	 * @return void
 	 */
-	public function __construct() {
-		CheckRequirements::run();
+	public static function run(): void {
+		CheckRequirements::init_hooks();
 		ManagePlugin::run();
-		Assets::run();
+		Assets::init_hooks();
 	}
 }

@@ -18,8 +18,8 @@ class App {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		add_action( 'init', [ $this, 'on_init' ], 1 );
+	public static function run(): void {
+		add_action( 'init', [ __CLASS__, 'on_init' ] );
 	}
 
 	/**
@@ -27,10 +27,10 @@ class App {
 	 */
 	public function on_init(): void {
 		if ( is_admin() ) {
-			ProductController::run();
-			WooCommerceSettingsController::run();
+			ProductController::init_hooks();
+			WooCommerceSettingsController::init_hooks();
 		} else {
-			BannerController::run();
+			BannerController::init_hooks();
 		}
 	}
 }

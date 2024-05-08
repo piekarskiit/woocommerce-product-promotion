@@ -6,13 +6,13 @@ use Exception;
 use PiekarskiIT\App\Helpers\Render;
 
 class BannerController {
-
-
 	/**
+	 * Initializes all hooks
+	 *
 	 * @return void
 	 */
-	public static function run(): void {
-		add_action( 'wp_body_open', [ new self(), 'show_banner' ] );
+	public static function init_hooks(): void {
+		add_action( 'wp_body_open', [ self::class, 'show_banner' ] );
 	}
 
 	/**
