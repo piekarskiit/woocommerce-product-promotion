@@ -17,5 +17,5 @@ if (!defined('ABSPATH')) {
 require_once 'vendor/autoload.php';
 
 PiekarskiIT\Config\PluginInfo::run(__FILE__);
-new PiekarskiIT\Config\Config();
-new PiekarskiIT\App\App();
+PiekarskiIT\Config\Config::run();
+PiekarskiIT\App\App::run();

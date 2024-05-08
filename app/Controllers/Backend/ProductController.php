@@ -7,13 +7,13 @@ use WC_Product;
 
 class ProductController {
 	/**
-	 * Run
+	 * Initializes all hooks
 	 *
 	 * @return void
 	 */
-	public static function run(): void {
-		add_action( 'woocommerce_product_options_pricing', [ new self(), 'custom_woocommerce_product_settings' ] );
-		add_action( 'woocommerce_admin_process_product_object', [ new self(), 'save_promotion_data' ] );
+	public static function init_hooks(): void {
+		add_action( 'woocommerce_product_options_pricing', [ __CLASS__, 'custom_woocommerce_product_settings' ] );
+		add_action( 'woocommerce_admin_process_product_object', [ __CLASS__, 'save_promotion_data' ] );
 	}
 
 	/**
@@ -21,7 +21,7 @@ class ProductController {
 	 *
 	 * @return void
 	 */
-	public function custom_woocommerce_product_settings(): void {
+	public static function custom_woocommerce_product_settings(): void {
 		$promote_product_id = get_option( '_promote_product_id' );
 
 		if ( (int) $promote_product_id === get_the_ID() ) {
@@ -54,7 +54,7 @@ class ProductController {
 	 *
 	 * @return void
 	 */
-	public function save_promotion_data( WC_Product $product ): void {
+	public static function save_promotion_data( WC_Product $product ): void {
 
 		$data = wp_unslash( $_POST );
 

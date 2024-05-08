@@ -4,8 +4,13 @@ namespace PiekarskiIT\App\Controllers\Backend;
 
 class WooCommerceSettingsController {
 
-	public static function run(): void {
-		add_filter( 'woocommerce_products_general_settings', [ new self(), 'custom_woocommerce_product_settings' ] );
+	/**
+	 * Initializes all hooks.
+	 *
+	 * @return void
+	 */
+	public static function init_hooks(): void {
+		add_filter( 'woocommerce_products_general_settings', [ __CLASS__, 'custom_woocommerce_product_settings' ] );
 	}
 
 	/**
@@ -13,7 +18,7 @@ class WooCommerceSettingsController {
 	 *
 	 * @return string[][]
 	 */
-	public function custom_woocommerce_product_settings( array $settings ): array {
+	public static function custom_woocommerce_product_settings( array $settings ): array {
 		$settings[] = array(
 			'title' => __( 'Product Promotion', 'wpp_translate' ),
 			'desc'  => '',
