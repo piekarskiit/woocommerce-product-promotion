@@ -50,5 +50,5 @@ npm run wpp:build
 
 #### Before commit
 ```sh
-npm run:build && composer tests
+npm i && npm run wpp:build && composer tests
 ```
