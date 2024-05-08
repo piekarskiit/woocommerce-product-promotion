@@ -25,10 +25,15 @@
 composer build
 ```
 
+### Run Composer tests:
+```sh
+composer tests
+```
+
 ### Install NPM dependencies:
 
 ```sh
-npm ci
+npm i
 ```
 
 ### Build assets:

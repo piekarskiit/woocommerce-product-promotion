@@ -8,7 +8,7 @@
 	],
 	"require": {
 		"php": ">=8.1.0",
-		"humbug/php-scoper": "0.17.7"
+		"humbug/php-scoper": "0.18.11"
 	},
 	"require-dev": {
 		"wp-coding-standards/wpcs": "dev-develop",
@@ -16,7 +16,8 @@
 		"phpstan/phpstan": "^1.10.67",
 		"szepeviktor/phpstan-wordpress": "^v1.3.4",
 		"phpcsstandards/phpcsutils": "^1.0.11",
-		"php-stubs/woocommerce-stubs": "^7.9.0"
+		"php-stubs/woocommerce-stubs": "^8.8.3",
+		"phpunit/phpunit": "^10.5.20"
 	},
 	"autoload": {
 		"classmap": [
@@ -35,7 +36,7 @@
 		"tests": "composer install && composer phpcs-fix && composer phpcs && composer phpstan",
 		"phpcs": "phpcs",
 		"phpcs-fix": "phpcbf",
-		"phpstan": "php -d memory_limit=512M -n ./vendor/bin/phpstan analyse",
+		"phpstan": "php -d memory_limit=2G -n ./vendor/bin/phpstan analyse",
 		"pre-install-cmd": "test -d vendor_prefixed || mkdir vendor_prefixed",
 		"all": "composer run pre-install-cmd && composer run build && composer run tests"
 	},
